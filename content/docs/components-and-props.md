@@ -1,6 +1,6 @@
 ---
 id: components-and-props
-title: Components and Props
+title: কম্পোনেন্টস ও Props
 permalink: docs/components-and-props.html
 redirect_from:
   - "docs/reusable-components.html"
@@ -16,17 +16,17 @@ prev: rendering-elements.html
 next: state-and-lifecycle.html
 ---
 
-Components let you split the UI into independent, reusable pieces, and think about each piece in isolation. This page provides an introduction to the idea of components. You can find a [detailed component API reference here](/docs/react-component.html).
+কম্পোনেন্ট আপনাকে UI কে স্বাধীন ও পুনরায় ব্যবহারযোগ্য করে ভাঙতে দেয়,এবং মনে করুন প্রত্যেকটি অংশ বিচ্ছিন্ন থাকে। এই পৃষ্ঠাটি কম্পোনেন্ট এর ধারণার সাথে পরিচয় করাবে। আপনি এখানে [বিস্তারিত কম্পোনেন্ট API রেফারেন্স পাবেন](/docs/react-component.html)
 
-Conceptually, components are like JavaScript functions. They accept arbitrary inputs (called "props") and return React elements describing what should appear on the screen.
+ধারণাগতভাবে, কম্পোনেন্টস অনেকটা জাভাস্কিপ্ট এর ফাংশন এর মত। তারা ইচ্ছামত ইনপুট নেয় (তাদের "props" বলে) এবং স্ক্রিনএ যা দেখাবে তা বর্ণিত React elements ফেরত দেয়।
 
-## Function and Class Components {#function-and-class-components}
+## ফাংশন এবং ক্লাস কম্পোনেন্ট {#function-and-class-components}
 
-The simplest way to define a component is to write a JavaScript function:
+জাভাস্কিপ্ট ফাংশন লিখে কম্পোনেন্ট সবচেয়ে সহজভাবে বর্ণনা করা যায়ঃ
 
 ```js
 function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return <h1>হ্যালো, {props.name}</h1>;
 }
 ```
 
