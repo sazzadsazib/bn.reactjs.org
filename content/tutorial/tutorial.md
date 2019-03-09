@@ -1,6 +1,6 @@
 ---
 id: tutorial
-title: "Tutorial: Intro to React"
+title: "টিউটোরিয়ালঃ React পরিচিতি"
 layout: tutorial
 sectionid: tutorial
 permalink: tutorial/tutorial.html
@@ -12,42 +12,40 @@ redirect_from:
   - "docs/tutorial-zh-CN.html"
 ---
 
-This tutorial doesn't assume any existing React knowledge.
+এই টিউটোরিয়ালটির জন্য React সম্পর্কে পূর্ব ধারণা থাকার প্রয়োজন নেই।
 
-## Before We Start the Tutorial {#before-we-start-the-tutorial}
+## টিউটোরিয়াল শুরু করার আগে  {#before-we-start-the-tutorial}
 
-We will build a small game during this tutorial. **You might be tempted to skip it because you're not building games -- but give it a chance.** The techniques you'll learn in the tutorial are fundamental to building any React apps, and mastering it will give you a deep understanding of React.
+আমরা এই টিউটোরিয়ালের সময় একটি ছোট গেম বানাবো। **আপনি হয়ত এটা এড়িয়ে যেতে চাইবেন কেননা আপনি কোন গেম বানাতে যাচ্ছেন না -- কিন্তু, একবার চেষ্টা করেই দেখুন না।** টিউটোরিয়ালে আপনি যে কৌশলগুলি শিখবেন তা যে কোন React অ্যাপ্লিকেশন তৈরির জন্য অপরিহার্য, এবং এটিতে দক্ষতা অর্জন করতে পারলে আপনি React সম্পর্কেও গভীর ধারণা পাবেন।
 
->Tip
+>পরামর্শ
 >
->This tutorial is designed for people who prefer to **learn by doing**. If you prefer learning concepts from the ground up, check out our [step-by-step guide](/docs/hello-world.html). You might find this tutorial and the guide complementary to each other.
+>এই টিউটোরিয়ালটি তাদের জন্য সাজানো হয়েছে যারা **কোড করে শিখতে** পছন্দ করেন। আপনি যদি প্রাথমিক ধারণা থেকে শিখতে আগ্রহী হোন তবে আমাদের [ধাপে-ধাপে গাইডটি](/docs/hello-world.html) দেখুন। আপনি এই টিউটোরিয়াল এবং এই গাইডটিকে একে অপরের পরিপূরক মনে করতে পারেন।
 
-The tutorial is divided into several sections:
+এই টিউটোরিয়ালটি বিভিন্ন বিভাগে ভাগ করা হয়েছেঃ
 
-* [Setup for the Tutorial](#setup-for-the-tutorial) will give you **a starting point** to follow the tutorial.
-* [Overview](#overview) will teach you **the fundamentals** of React: components, props, and state.
-* [Completing the Game](#completing-the-game) will teach you **the most common techniques** in React development.
-* [Adding Time Travel](#adding-time-travel) will give you **a deeper insight** into the unique strengths of React.
+* [টিউটোরিয়ালের জন্য সেটআপ](#setup-for-the-tutorial) আপনাকে এই টিউটোরিয়াল শুরু করার **হাতেখড়ি** দিবে।
+* [সারমর্ম](#overview) আপনাকে React এর **মূলভিত্তি** components, props, এবং state শেখাবে।
+* [গেম বানানো সম্পন্ন](#completing-the-game) React ডেভেলপমেন্টের **সবচেয়ে সাধারণ কৌশলগুলো** শেখাবে।
+* [টাইম ট্রাভেল সংযোজন](#adding-time-travel) আপনাকে React এর অনন্য শক্তি সম্পর্কে **একটি গভীর ধারণা** দিবে।
 
-You don't have to complete all of the sections at once to get the value out of this tutorial. Try to get as far as you can -- even if it's one or two sections.
+এই টিউটোরিয়াল থেকে সুফল পেতে আপনাকে যে সব বিভাগগুলি একবারে শেষ করতে হবে এমন নয়। আপনি যতদূর সম্ভব শেষ করার চেষ্টা করুন - এমনকি যদি এক বা দুটি বিভাগও হয় তাতেও হবে।
 
-It's fine to copy and paste code as you're following along the tutorial, but we recommend to type it by hand. This will help you develop a muscle memory and a stronger understanding.
+### আমরা কি তৈরি করছি? {#what-are-we-building}
 
-### What Are We Building? {#what-are-we-building}
+এই টিউটোরিয়ালে, আমরা দেখাব কিভাবে React দিয়ে একটি ইন্টারেক্টিভ tic-tac-toe গেম বানানো যায়।
 
-In this tutorial, we'll show how to build an interactive tic-tac-toe game with React.
+আমরা কি বানাবো তা আপনি এইখানে দেখতে পারবেনঃ **[সর্বশেষ ফলাফল](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**। যদি কোডটি আপনার কাছে অর্থবহ মনে না হয় বা আপনি কোডের সিনট্যাক্সের সাথে পরিচিত না হন তবে চিন্তা করবেন না! এই টিউটোরিয়ালটির লক্ষ্য হচ্ছে আপনাকে React এবং এর সিনট্যাক্স বুঝতে সহায়তা করা।
 
-You can see what we'll be building here: **[Final Result](https://codepen.io/gaearon/pen/gWWZgR?editors=0010)**. If the code doesn't make sense to you, or if you are unfamiliar with the code's syntax, don't worry! The goal of this tutorial is to help you understand React and its syntax.
+আমরা আপনাকে টিউটোরিয়ালটি চালিয়ে যাওয়ার আগে tic-tac-toe গেমটি দেখতে অনুরোধ করব। যে ফিচারটি আপনি লক্ষ্য করবেন তা হল গেম বোর্ডের ডানদিকে একটি সংখ্যাযুক্ত তালিকা। এই তালিকাটি গেমটিতে যতগুলো ধাপ সম্পন্ন হয়েছে তার একটি ইতিহাস দেয় এবং গেমের অগ্রগতির সাথে সাথে এটি আপডেট হয়।
 
-We recommend that you check out the tic-tac-toe game before continuing with the tutorial. One of the features that you'll notice is that there is a numbered list to the right of the game's board. This list gives you a history of all of the moves that have occurred in the game, and is updated as the game progresses.
+একবার আপনি tic-tac-toe গেমটি সম্পর্কে পরিচিত হলে, গেমটি বন্ধ করতে পারেন। আমরা এই টিউটোরিয়ালে একটি সহজতর টেমপ্লেট থেকে শুরু করব। আমাদের পরবর্তী ধাপ আপনাকে তৈরি করা যাতে আপনি গেম বানানো শুরু করতে পারেন।
 
-You can close the tic-tac-toe game once you're familiar with it. We'll be starting from a simpler template in this tutorial. Our next step is to set you up so that you can start building the game.
+### পূর্বশর্ত {#prerequisites}
 
-### Prerequisites {#prerequisites}
+আমরা ধারণা করছি যে আপনার HTML এবং জাভাস্ক্রিপ্টের সাথে কিছু পরিচিতি রয়েছে তবে আপনি যদি অন্য কোন প্রোগ্রামিং ভাষা থেকে আসেন তবেও আপনি অনুসরণ করতে সক্ষম হবেন। আমরা আরও ধারণা করছি যে আপনি functions, objects, arrays এবং অল্প বিস্তর classes এর মতো প্রোগ্রামিং ধারণাগুলির সাথেও পরিচিত।
 
-We'll assume that you have some familiarity with HTML and JavaScript, but you should be able to follow along even if you're coming from a different programming language. We'll also assume that you're familiar with programming concepts like functions, objects, arrays, and to a lesser extent, classes.
-
-If you need to review JavaScript, we recommend reading [this guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript). Note that we're also using some features from ES6 -- a recent version of JavaScript. In this tutorial, we're using [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), and [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) statements. You can use the [Babel REPL](babel://es5-syntax-example) to check what ES6 code compiles to.
+আপনার যদি জাভাস্ক্রিপ্ট জ্ঞান ঝালাই করার প্রয়োজন হয়, তবে আমরা [এই গাইডটি](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) পড়ার অনুরোধ করছি। উল্লেখ্য আমরা জাভাস্ক্রিপ্টের সাম্প্রতিক সংস্করণ — ES6 থেকে কিছু ফিচার ব্যবহার করছি। এই টিউটোরিয়ালে আমরা [arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions), [classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes), [`let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let), এবং [`const`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) স্টেটমেন্টস ব্যবহার করছি। ES6 কিভাবে কোড কম্পাইল করে তা দেখার জন্য আপনি [Babel REPL](babel://es5-syntax-example) ব্যবহার করতে পারেন।
 
 ## Setup for the Tutorial {#setup-for-the-tutorial}
 
@@ -188,7 +186,9 @@ The Square component renders a single `<button>` and the Board renders 9 squares
 
 ### Passing Data Through Props {#passing-data-through-props}
 
-Just to get our feet wet, let's try passing some data from our Board component to our Square component.
+To get our feet wet, let's try passing some data from our Board component to our Square component.
+
+We strongly recommend typing code by hand as you're working through the tutorial and not using copy/paste. This will help you develop muscle memory and a stronger understanding.
 
 In Board's `renderSquare` method, change the code to pass a prop called `value` to the Square:
 
@@ -242,7 +242,7 @@ class Square extends React.Component {
 }
 ```
 
-If we click on a Square now, we should get an alert in our browser.
+If you click on a Square now, you should see an alert in your browser.
 
 >Note
 >
@@ -260,7 +260,7 @@ If we click on a Square now, we should get an alert in our browser.
 >}
 >```
 >
->Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. It only fires after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
+>Notice how with `onClick={() => alert('click')}`, we're passing *a function* as the `onClick` prop. React will only call this function after a click. Forgetting `() =>` and writing `onClick={alert('click')}` is a common mistake, and would fire the alert every time the component re-renders.
 
 As a next step, we want the Square component to "remember" that it got clicked, and fill it with an "X" mark. To "remember" things, components use **state**.
 
@@ -294,7 +294,7 @@ class Square extends React.Component {
 Now we'll change the Square's `render` method to display the current state's value when clicked:
 
 * Replace `this.props.value` with `this.state.value` inside the `<button>` tag.
-* Replace the `() => alert()` event handler with `() => this.setState({value: 'X'})`.
+* Replace the `onClick={...}` event handler with `onClick={() => this.setState({value: 'X'})}`.
 * Put the `className` and `onClick` props on separate lines for better readability.
 
 After these changes, the `<button>` tag that is returned by the Square's `render` method looks like this:
@@ -356,7 +356,9 @@ We may think that Board should just ask each Square for the Square's state. Alth
 
 **To collect data from multiple children, or to have two child components communicate with each other, you need to declare the shared state in their parent component instead. The parent component can pass the state back down to the children by using props; this keeps the child components in sync with each other and with the parent component.**
 
-Lifting state into a parent component is common when React components are refactored -- let's take this opportunity to try it out. We'll add a constructor to the Board and set the Board's initial state to contain an array with 9 nulls. These 9 nulls correspond to the 9 squares:
+Lifting state into a parent component is common when React components are refactored -- let's take this opportunity to try it out.
+
+Add a constructor to the Board and set the Board's initial state to contain an array of 9 nulls corresponding to the 9 squares:
 
 ```javascript{2-7}
 class Board extends React.Component {
@@ -370,35 +372,9 @@ class Board extends React.Component {
   renderSquare(i) {
     return <Square value={i} />;
   }
-
-  render() {
-    const status = 'Next player: X';
-
-    return (
-      <div>
-        <div className="status">{status}</div>
-        <div className="board-row">
-          {this.renderSquare(0)}
-          {this.renderSquare(1)}
-          {this.renderSquare(2)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(3)}
-          {this.renderSquare(4)}
-          {this.renderSquare(5)}
-        </div>
-        <div className="board-row">
-          {this.renderSquare(6)}
-          {this.renderSquare(7)}
-          {this.renderSquare(8)}
-        </div>
-      </div>
-    );
-  }
-}
 ```
 
-When we fill the board in later, the board will look something like this:
+When we fill the board in later, the `this.state.squares` array will look something like this:
 
 ```javascript
 [
@@ -432,7 +408,7 @@ Each Square will now receive a `value` prop that will either be `'X'`, `'O'`, or
 
 Next, we need to change what happens when a Square is clicked. The Board component now maintains which squares are filled. We need to create a way for the Square to update the Board's state. Since state is considered to be private to a component that defines it, we cannot update the Board's state directly from Square.
 
-To maintain the Board's state's privacy, we'll pass down a function from the Board to the Square. This function will get called when a Square is clicked. We'll change the `renderSquare` method in Board to:
+Instead, we'll pass down a function from the Board to the Square, and we'll have Square call that function when a square is clicked. We'll change the `renderSquare` method in Board to:
 
 ```javascript{5}
   renderSquare(i) {
@@ -478,11 +454,11 @@ When a Square is clicked, the `onClick` function provided by the Board is called
 2. When the button is clicked, React will call the `onClick` event handler that is defined in Square's `render()` method.
 3. This event handler calls `this.props.onClick()`. The Square's `onClick` prop was specified by the Board.
 4. Since the Board passed `onClick={() => this.handleClick(i)}` to Square, the Square calls `this.handleClick(i)` when clicked.
-5. We have not defined the `handleClick()` method yet, so our code crashes.
+5. We have not defined the `handleClick()` method yet, so our code crashes. If you click a square now, you should see a red error screen saying something like "this.handleClick is not a function".
 
 >Note
 >
->The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. We could name the Square's `onClick` prop or Board's `handleClick` method differently. In React, however, it is a convention to use `on[Event]` names for props which represent events and `handle[Event]` for the methods which handle the events.
+>The DOM `<button>` element's `onClick` attribute has a special meaning to React because it is a built-in component. For custom components like Square, the naming is up to you. We could give any name to the Square's `onClick` prop or Board's `handleClick` method, and the code would work the same. In React, it's conventional to use `on[Event]` names for props which represent events and `handle[Event]` for the methods which handle the events.
 
 When we try to click a Square, we should get an error because we haven't defined `handleClick` yet. We'll now add `handleClick` to the Board class:
 
@@ -539,7 +515,7 @@ class Board extends React.Component {
 
 **[View the full code at this point](https://codepen.io/gaearon/pen/ybbQJX?editors=0010)**
 
-After these changes, we're again able to click on the Squares to fill them. However, now the state is stored in the Board component instead of the individual Square components. When the Board's state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
+After these changes, we're again able to click on the Squares to fill them, the same as we had before. However, now the state is stored in the Board component instead of the individual Square components. When the Board's state changes, the Square components re-render automatically. Keeping the state of all squares in the Board component will allow it to determine the winner in the future.
 
 Since the Square components no longer maintain state, the Square components receive values from the Board component and inform the Board component when they're clicked. In React terms, the Square components are now **controlled components**. The Board has full control over them.
 
@@ -581,7 +557,7 @@ Detecting changes in mutable objects is difficult because they are modified dire
 
 Detecting changes in immutable objects is considerably easier. If the immutable object that is being referenced is different than the previous one, then the object has changed.
 
-#### Determining When to Re-render in React {#determining-when-to-re-render-in-react}
+#### Determining When to Re-Render in React {#determining-when-to-re-render-in-react}
 
 The main benefit of immutability is that it helps you build _pure components_ in React. Immutable data can easily determine if changes have been made which helps to determine when a component requires re-rendering.
 
@@ -611,7 +587,7 @@ We have changed `this.props` to `props` both times it appears.
 
 >Note
 >
->When we modified the Square to be a function component, we also changed `onClick={() => this.props.onClick()}` to a shorter `onClick={props.onClick}` (note the lack of parentheses on *both* sides). In a class, we used an arrow function to access the correct `this` value, but in a function component we don't need to worry about `this`.
+>When we modified the Square to be a function component, we also changed `onClick={() => this.props.onClick()}` to a shorter `onClick={props.onClick}` (note the lack of parentheses on *both* sides).
 
 ### Taking Turns {#taking-turns}
 
@@ -643,7 +619,9 @@ Each time a player moves, `xIsNext` (a boolean) will be flipped to determine whi
   }
 ```
 
-With this change, "X"s and "O"s can take turns. Let's also change the "status" text in Board's `render` so that it displays which player has the next turn:
+With this change, "X"s and "O"s can take turns. Try it!
+
+Let's also change the "status" text in Board's `render` so that it displays which player has the next turn:
 
 ```javascript{2}
   render() {
@@ -714,7 +692,7 @@ class Board extends React.Component {
 
 ### Declaring a Winner {#declaring-a-winner}
 
-Now that we show which player's turn is next, we should also show when the game is won and there are no more turns to make. We can determine a winner by adding this helper function to the end of the file:
+Now that we show which player's turn is next, we should also show when the game is won and there are no more turns to make. Copy this helper function and paste it at the end of the file:
 
 ```javascript
 function calculateWinner(squares) {
@@ -737,6 +715,8 @@ function calculateWinner(squares) {
   return null;
 }
 ```
+
+Given an array of 9 squares, this function will check for a winner and return `'X'`, `'O'`, or `null` as appropriate.
 
 We will call `calculateWinner(squares)` in the Board's `render` function to check if a player has won. If a player has won, we can display text such as "Winner: X" or "Winner: O". We'll replace the `status` declaration in Board's `render` function with this code:
 
