@@ -22,7 +22,7 @@ next: state-and-lifecycle.html
 
 ## ফাংশন এবং ক্লাস কম্পোনেন্ট {#function-and-class-components}
 
-জাভাস্কিপ্ট ফাংশন লিখে কম্পোনেন্ট সবচেয়ে সহজভাবে বর্ণনা করা যায়ঃ
+জাভাস্ক্রিপ্ট ফাংশন লিখে কম্পোনেন্ট সবচেয়ে সহজভাবে বর্ণনা করা যায়ঃ
 
 ```js
 function Welcome(props) {
@@ -30,31 +30,31 @@ function Welcome(props) {
 }
 ```
 
-This function is a valid React component because it accepts a single "props" (which stands for properties) object argument with data and returns a React element. We call such components "function components" because they are literally JavaScript functions.
+এই ফাংশনটি React কম্পোনেন্ট হিসাবে বৈধ কারণ এটি একটি "props" (যা প্রোপার্টিস বুঝায়) অবজেক্ট আর্গুমেন্ট ডাটাসহ React element এ ফেরত পাঠায় । আমরা এই রকম কম্পোনেন্টসকে "function components" বলি কারণ তারা সোজাসুজি জাভাস্ক্রিপ্ট এর ফাংশনস।
 
-You can also use an [ES6 class](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) to define a component:
+আপনি চাইলে [ES6 ক্লাস](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Classes) ব্যবহার করেও কম্পোনেন্ট তৈরি করতে পারবেন।
 
 ```js
 class Welcome extends React.Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>হ্যালো, {this.props.name}</h1>;
   }
 }
 ```
 
-The above two components are equivalent from React's point of view.
+উপরের দুটি কম্পোনেন্ট React's এর দৃষ্টিতে একই।
 
-Classes have some additional features that we will discuss in the [next sections](/docs/state-and-lifecycle.html). Until then, we will use function components for their conciseness.
+Class এর কিছু অধিক বৈশিষ্ট্য আছে যা আমরা [পরবর্তী অধ্যায়ে](/docs/state-and-lifecycle.html) আলোচনা করব। ততক্ষণ পর্যন্ত আমরা সংক্ষিপ্ত রাখার জন্য ফাংশনাল কম্পোনেন্ট ব্যবহার করব।
 
-## Rendering a Component {#rendering-a-component}
+## কম্পোনেন্টকে রেন্ডার করা {#rendering-a-component}
 
-Previously, we only encountered React elements that represent DOM tags:
+পূর্বে, আমরা এমন React elements er সম্মুখীন হয়েছি যা DOM ট্যাগস কে চিত্রিত করেঃ
 
 ```js
 const element = <div />;
 ```
 
-However, elements can also represent user-defined components:
+তবে, elements কে user-defined কম্পোনেন্টসেও প্রকাশিত করা যায়ঃ
 
 ```js
 const element = <Welcome name="Sara" />;
