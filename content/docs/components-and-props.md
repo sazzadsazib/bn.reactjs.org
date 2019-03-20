@@ -60,9 +60,9 @@ const element = <div />;
 const element = <Welcome name="Sara" />;
 ```
 
-When React sees an element representing a user-defined component, it passes JSX attributes to this component as a single object. We call this object "props".
+React যখন user-define কম্পোনেন্ট দেখে, এটি এই কম্পোনেন্টে JSX attributes গুলো সিঙ্গেল object হিসাবে পাস করে। আমরা এই object গুলো কে "props" বলি।
 
-For example, this code renders "Hello, Sara" on the page:
+উদাহরণস্বরূপ, এই কোডটি এই পৃষ্ঠায় "Hello, Sara" রেন্ডার করবেঃ
 
 ```js{1,5}
 function Welcome(props) {
@@ -78,14 +78,14 @@ ReactDOM.render(
 
 [](codepen://components-and-props/rendering-a-component)
 
-Let's recap what happens in this example:
+চলুন আমারা এই উদাহরণ এ যা করেছি আবার দেখিঃ
 
-1. We call `ReactDOM.render()` with the `<Welcome name="Sara" />` element.
-2. React calls the `Welcome` component with `{name: 'Sara'}` as the props.
-3. Our `Welcome` component returns a `<h1>Hello, Sara</h1>` element as the result.
-4. React DOM efficiently updates the DOM to match `<h1>Hello, Sara</h1>`.
+১. আমরা `ReactDOM.render()` এ `<Welcome name="Sara" />` element সহ ডাকি।<br/>
+২. React `Welcome` কম্পোনেন্টটি `{name: 'Sara'}` props সহ ডাকে।<br/>
+৩. আমাদের `Welcome` কম্পোনেন্টটি প্রত্যুত্তরে `<h1>Hello, Sara</h1>` element ফেরত দেয়।<br/>
+৪. React DOM দক্ষতার সাথে `<h1>Hello, Sara</h1>` সাথে মিল রেখে DOM টি আপডেট করে।<br/>
 
->**Note:** Always start component names with a capital letter.
+>**বিঃদ্রঃ** সবসময় কম্পোনেন্টের নাম বড় অক্ষর দিয়ে শুরু করবেন।
 >
 >React treats components starting with lowercase letters as DOM tags. For example, `<div />` represents an HTML div tag, but `<Welcome />` represents a component and requires `Welcome` to be in scope.
 >
